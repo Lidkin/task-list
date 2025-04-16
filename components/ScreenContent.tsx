@@ -1,25 +1,32 @@
-import { Text, View } from 'react-native';
+import { useState } from 'react';
+import { Text, View, SafeAreaView, Button } from 'react-native';
 
-import { EditScreenInfo } from './EditScreenInfo';
+import StartScreen from './StartScreen';
 
-type ScreenContentProps = {
-  title: string;
-  path: string;
-  children?: React.ReactNode;
-};
+const ScreenContent = () => {
+  const [openList, setOpenList] = useState(false);
 
-export const ScreenContent = ({ title, path, children }: ScreenContentProps) => {
   return (
-    <View className={styles.container}>
-      <Text className={styles.title}>{title}</Text>
-      <View className={styles.separator} />
-      <EditScreenInfo path={path} />
-      {children}
-    </View>
+    <>
+      <SafeAreaView className={styles.safeContainer}>
+        <View className={styles.container}>
+          <View className="flex-row items-center">
+            <Text className={styles.title}>Tasks List</Text>
+            {openList && <Button title="x" onPress={() => setOpenList(false)} />}
+          </View>
+          <View className={styles.separator} />
+          <StartScreen openList={openList} setOpenList={setOpenList} />
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
+
+export default ScreenContent;
+
 const styles = {
+  safeContainer: 'flex flex-1 m-6',
   container: `items-center flex-1 justify-center`,
   separator: `h-[1px] my-7 w-4/5 bg-gray-200`,
-  title: `text-xl font-bold`,
+  title: `text-2xl font-bold text-blue-500`,
 };
