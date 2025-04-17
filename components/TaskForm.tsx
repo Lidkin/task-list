@@ -3,7 +3,7 @@ import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable } from 'react-native';
 
-import { Task } from '../types/types';
+import { Task } from '../context/TaskContext';
 
 type FormProps = {
   addTask: (task: Task) => void;
@@ -43,11 +43,12 @@ const TaskForm: React.FC<FormProps> = ({ addTask }) => {
           <Text style={{ marginBottom: 10 }} />
         )}
         <TextInput
-          className="w-[75%] rounded-lg border p-2 text-lg text-blue-950"
+          className="text-md flex w-[75%] items-start justify-center rounded-md border p-2 text-blue-950"
           clearTextOnFocus
           placeholder="Enter Task Title"
           value={title}
           onChangeText={setTitle}
+          onChange={() => setError('')}
         />
       </View>
       <View className="items-center justify-center">

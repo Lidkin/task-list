@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Task } from '../types/types';
+import { Task } from '../context/TaskContext';
 
 type CompletedProps = {
   completedTasks: Task[];

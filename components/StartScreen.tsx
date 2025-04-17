@@ -1,27 +1,16 @@
-import React, { useState } from 'react';
-import { Pressable, StyleSheet, View, Text, ScrollView } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
-import TasksList from './TasksList';
+import TasksList from './TasksView';
 
 export type Props = {
   openList: boolean;
-  setOpenList: (value: boolean) => void;
 };
 
-const StartScreen: React.FC<Props> = ({ openList, setOpenList }) => {
+const StartScreen: React.FC<Props> = ({ openList }) => {
   return (
-    <View className="h-full w-full border border-green-800" style={styles.container}>
-      {!openList ? (
-        <View style={styles.listContainer} className="border border-orange-500">
-          <Pressable
-            className="rounded-xl border border-blue-700 bg-blue-400"
-            onPress={() => setOpenList(true)}>
-            <Text style={styles.button}>Open List</Text>
-          </Pressable>
-        </View>
-      ) : (
-        <TasksList setOpenList={setOpenList} />
-      )}
+    <View className="h-full w-full" style={styles.container}>
+      {openList && <TasksList />}
     </View>
   );
 };
@@ -35,12 +24,6 @@ const styles = StyleSheet.create({
   listContainer: {
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-  button: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    margin: 16,
-    color: '#ffffff',
   },
 });
 
