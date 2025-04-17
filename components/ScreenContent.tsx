@@ -8,7 +8,7 @@ const ScreenContent = () => {
 
   return (
     <View className={styles.container}>
-      <Pressable className="flex-row items-center" onPress={() => setOpenList((prev) => !prev)}>
+      <Pressable className="items-center" onPress={() => setOpenList((prev) => !prev)}>
         <Text className={styles.title}>{openList ? 'Close' : 'Open'} Tasks List</Text>
       </Pressable>
       <View className={styles.separator} />
@@ -21,6 +21,6 @@ export default ScreenContent;
 
 const styles = {
   container: `items-center flex-1 justify-center`,
-  separator: `h-[1px] my-7 w-4/5 bg-gray-200`,
-  title: `text-3xl font-bold text-white`,
+  separator: `h-[1px] my-5 w-4/5 bg-gray-200`,
+  title: `text-3xl font-bold text-white pt-5`,
 };

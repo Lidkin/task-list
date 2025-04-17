@@ -28,7 +28,6 @@ const TaskForm: React.FC<FormProps> = ({ addTask }) => {
 
     setError('');
     addTask({ title: title.trim(), priority, deadline: deadline.toLocaleDateString() });
-    console.log(title);
     setDeadline(new Date());
     setTitle('');
     setPriority('low');

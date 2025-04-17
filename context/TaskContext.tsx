@@ -55,7 +55,5 @@ export const TaskProvider = ({ children }: Props) => {
     saveTasks(tasks);
   }, [tasks]);
 
-  console.log(tasks);
-
   return <TaskContext.Provider value={{ tasks, setTasks }}>{children}</TaskContext.Provider>;
 };
