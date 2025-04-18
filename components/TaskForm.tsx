@@ -15,11 +15,6 @@ const TaskForm: React.FC<FormProps> = ({ addTask }) => {
   const [deadline, setDeadline] = useState(new Date());
   const [error, setError] = useState('');
 
-  const onChange = () => {
-    console.log(deadline);
-    setDeadline(deadline);
-  };
-
   const handlePress = () => {
     if (title.trim() === '') {
       setError('Title is required');
