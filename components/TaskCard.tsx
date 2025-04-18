@@ -44,9 +44,9 @@ const TaskCard: React.FC<CardProps> = ({ task, showButton }) => {
 
   return (
     <View className={taskCardVar({ color: `${task.priority}` })}>
-      <View className="flex-row justify-between gap-1 ">
-        <View className="basis-2/3 flex-col justify-around">
-          <Text className="text-wrap text-3xl font-medium">{task.title}</Text>
+      <View className="items-senter flex-1 flex-row justify-center gap-1">
+        <View className="basis-2/3 flex-col justify-between">
+          <Text className="text-wrap text-2xl font-medium">{task.title}</Text>
           <Text>
             Due <Text className="text-lg font-semibold">{task.deadline}</Text>
           </Text>
@@ -54,19 +54,21 @@ const TaskCard: React.FC<CardProps> = ({ task, showButton }) => {
             Priority <Text className="font-extrabold">{task.priority.toUpperCase()}</Text>
           </Text>
         </View>
-        <View className="basis-1/3 flex-col justify-center">
-          {showButton && (
+        <View className="flex flex-shrink justify-center">
+          <View className="flex flex-col justify-center">
+            {showButton && (
+              <Pressable
+                className={button({ color: 'complete' })}
+                onPress={() => handlePress(task.id!, 'complete')}>
+                <Text className=" text-md px-1 font-bold text-white">Done</Text>
+              </Pressable>
+            )}
             <Pressable
-              className={button({ color: 'complete' })}
-              onPress={() => handlePress(task.id!, 'complete')}>
-              <Text className=" text-md px-1 font-bold text-white">Complete</Text>
+              className={button({ color: 'delete' })}
+              onPress={() => handlePress(task.id!, 'delete')}>
+              <Text className=" text-md px-1 font-bold text-white">Delete</Text>
             </Pressable>
-          )}
-          <Pressable
-            className={button({ color: 'delete' })}
-            onPress={() => handlePress(task.id!, 'delete')}>
-            <Text className=" text-md px-1 font-bold text-white">Delete</Text>
-          </Pressable>
+          </View>
         </View>
       </View>
     </View>

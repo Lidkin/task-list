@@ -16,8 +16,8 @@ const TaskForm: React.FC<FormProps> = ({ addTask }) => {
   const [error, setError] = useState('');
 
   const onChange = () => {
-    const currentDate = deadline;
-    setDeadline(currentDate);
+    console.log(deadline);
+    setDeadline(deadline);
   };
 
   const handlePress = () => {
@@ -51,7 +51,12 @@ const TaskForm: React.FC<FormProps> = ({ addTask }) => {
         />
       </View>
       <View className="items-center justify-center">
-        <DateTimePicker value={deadline} mode="date" display="default" onChange={onChange} />
+        <DateTimePicker
+          value={deadline}
+          mode="date"
+          display="default"
+          onChange={(evt, selectedDate) => setDeadline(selectedDate!)}
+        />
       </View>
       <View className=" items-center justify-center">
         <Picker
